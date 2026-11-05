@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر إكسسوار آدم | العجل وقطع الغيار</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+<header>
+    <div class="logo">
+        <!-- أضفنا عنصر الصورة للوجو جنب اسم إكسسوار آدم -->
+        <img src="logoooo.png" alt="لوجو إكسسوار آدم" style="width: 40px; height: 40px; object-fit: contain; border-radius: 50%;">
+        إكسسوار آدم
+    </div>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="اكتب الي انت عايزو ..." oninput="filterProducts()">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+    
+    <div class="nav-links">
+        <a href="about.html" style="color: white; text-decoration: none; margin-left: 20px; font-weight: bold;"><i class="fas fa-info-circle"></i> نبذة عننا</a>
+        <a href="contact.html" style="color: white; text-decoration: none; margin-left: 20px; font-weight: bold;"><i class="fas fa-headset"></i> خش كلمنا</a>
+        <div class="cart-icon" onclick="toggleCart()" style="display: inline-block;">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </div>
+</header>
+
+    <!-- Smart Compatibility Filter & Price Sorting -->
+    <section class="compatibility-section">
+        <h2><i class="fas fa-tools"></i> اكسسوار ادم يسعي دائما لخدمتكم</h2>
+        <p style="margin-bottom: 15px; color: #bdc3c7;"> فلتره الاسعار اهي :</p>
+        <div class="filter-box">
+           
+
+            
+           
+
+            <!-- قائمة ترتيب الأسعار الجديدة المطلوبة -->
+            <select id="priceSort" onchange="filterProducts()" style="background-color: #e67e22; color: white; font-weight: bold;">
+                <option value="" style="color: #333;">-- دوس عالجرح --</option>
+                <option value="high-low" style="color: #333;">من الأغلى للأرخص ⬆️</option>
+                <option value="low-high" style="color: #333;">من الأرخص للأغلى ⬇️</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <h2 class="section-title">المنتجات المتاحة</h2>
+        <div class="products-grid" id="productsGrid">
+            
+            <!-- كارت منتج 1 -->
+            <div class="product-card" data-price="150">
+                <span class="badge-compatible">✔ سعر تنافسي</span>
+                <img src="sosteen 77.jpeg" class="product-img" alt="ترس خلفي">
+                <div class="product-info">
+                    <div class="product-title">طقم تروس خلفي 7 سرعات</div>
+                    <div class="product-category">قطع غيار - سرعات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('طقم تروس خلفي 7 سرعات', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <!-- كارت منتج 2 -->
+            <div class="product-card" data-price="6500">
+                <span class="badge-compatible">✔ سعر تنافسي</span>
+                <img src="gabliaa 26.jpeg" class="product-img" alt="عجلة جبلية">
+                <div class="product-info">
+                    <div class="product-title">عجلة جبلية مساعدين مقاس 26</div>
+                    <div class="product-category">دراجات كاملة</div>
+                    <div class="product-price">6500 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة جبلية مساعدين مقاس 26', 6500)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <!-- كارت منتج 3 -->
+            <div class="product-card" data-price="2000">
+                <img src="kawetsh scoo.jpeg" class="product-img" alt="تيوبلس سكوتر">
+                <div class="product-info">
+                    <div class="product-title">إطار تيوبلس إسكوتر كهربائي</div>
+                    <div class="product-category">قطع غيار سكوتر</div>
+                    <div class="product-price">2000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('إطار تيوبلس إسكوتر كهربائي', 2000)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="20">
+                <img src="akss 15 ll.JPG" class="product-img" alt="اكس 15 بدون ورده">
+                <div class="product-info">
+                    <div class="product-title">اكس 15 بدون ورده</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">20 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('اكس 15 بدون ورده', 20)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="70">
+                <img src="qalb 3ady.JPG" class="product-img" alt="قلب بدال عاده">
+                <div class="product-info">
+                    <div class="product-title">قلب بدال عاده</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">70 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('قلب بدال عاده', 70)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="megalfin.JPG" class="product-img" alt="قلب بدال الماني">
+                <div class="product-info">
+                    <div class="product-title">قلب بدال الماني</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('قلب بدال الماني', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="raqba negar.JPG" class="product-img" alt="رقبة نيجر المونيا">
+                <div class="product-info">
+                    <div class="product-title">رقبة نيجر المونيا</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('رقبة نيجر المونيا', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="qefl pro.JPG" class="product-img" alt="قفل خرطوم بزرار">
+                <div class="product-info">
+                    <div class="product-title">قفل خرطوم بزرار</div>
+                    <div class="product-category">حمايه دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('قفل خرطوم بزرار', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="100">
+                <img src="qefl.JPG" class="product-img" alt="قفل خرطوم عاده">
+                <div class="product-info">
+                    <div class="product-title">قفل خرطوم عاده</div>
+                    <div class="product-category">حماية دراجات</div>
+                    <div class="product-price">100 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('قفل خرطوم عاده', 100)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="qwobyatt.JPG" class="product-img" alt="كوبيات نيجر المونيا">
+                <div class="product-info">
+                    <div class="product-title">كوبيات نيجر المونيا</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('كوبيات نيجر المونيا', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="100">
+                <img src="جنزير سرعات.JPG" class="product-img" alt="جنزير سرعات">
+                <div class="product-info">
+                    <div class="product-title">جنزير سرعات</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">100 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('جنزير سرعات', 100)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="جوز سناده نور.JPG" class="product-img" alt="جوز سناده نور">
+                <div class="product-info">
+                    <div class="product-title">جوز سناده نور</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('جوز سناده نور', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="جوز كفه نيجر حديد.JPG" class="product-img" alt="جوز كفه نيجر حديد">
+                <div class="product-info">
+                    <div class="product-title">جوز كفه حديد</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('جوز كفه حديد', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="80">
+                <img src="صرر جميع المقاسات.JPG" class="product-img" alt="صرر">
+                <div class="product-info">
+                    <div class="product-title">صرر</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">80 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('صرر', 80)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="سرينه 8 صوت.JPG" class="product-img" alt="سرينه 8 صوت">
+                <div class="product-info">
+                    <div class="product-title">سرينه 8 صوت </div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('سرينه 8 صوت', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="80">
+                <img src="سرينه عصفوره.JPG" class="product-img" alt="سرينه عصفوره">
+                <div class="product-info">
+                    <div class="product-title">سرينه عصفوره</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">80 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('سرينه عصفوره', 80)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="70">
+                <img src="كرسي اطفال.JPG" class="product-img" alt="كرسي اطفال">
+                <div class="product-info">
+                    <div class="product-title">كرسي اطفال </div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">70 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('كرسي اطفال', 70)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="100">
+                <img src="كرسي باشاره.JPG" class="product-img" alt="كرسي باشاره">
+                <div class="product-info">
+                    <div class="product-title">كرسي باشاره</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">100 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('كرسي باشاره', 100)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="كرسي طبي.JPG" class="product-img" alt="كرسي طبي">
+                <div class="product-info">
+                    <div class="product-title">كرسي طبي</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('كرسي طبي', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="150">
+                <img src="كرسي نيجر.JPG" class="product-img" alt="كرسي نيجر">
+                <div class="product-info">
+                    <div class="product-title">كرسي نيجر</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">150 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('كرسي نيجر', 150)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="50">
+                <img src="zarf forsh.JPG" class="product-img" alt="ظرف فورش عاده">
+                <div class="product-info">
+                    <div class="product-title">ظرف فورش</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">50 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('ظرف فورش', 50)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="50">
+                <img src="yad negar.JPG" class="product-img" alt="يد نيجر">
+                <div class="product-info">
+                    <div class="product-title">يد نيجر</div>
+                    <div class="product-category">قطع غيار دراجات</div>
+                    <div class="product-price">50 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('يد نيجر', 50)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="50000">
+                <img src="اسكوتر ك.jpeg" class="product-img" alt="اسكوتر كهربائي كبير">
+                <div class="product-info">
+                    <div class="product-title">اسكوتر كهربائي كبير</div>
+                    <div class="product-category">اسكوترات</div>
+                    <div class="product-price">50000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('اسكوتر كهربائي كبير', 50000)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="2500">
+                <img src="عجلة فوليكنو 16 حماله وسله.jpeg" class="product-img" alt="عجله volcano 16 حماله وسله">
+                <div class="product-info">
+                    <div class="product-title">عجلة 16 volcano حماله وسله </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">2500 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة16 volcano حماله وسله', 2500)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="2300">
+                <img src="عجله 12 فولكينو سله وحماله.jpeg" class="product-img" alt="عجلة 12 حماله وسله">
+                <div class="product-info">
+                    <div class="product-title">عجلة 12 volcano حماله وسله </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">2300 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة 12 volcano حماله وسله', 2300)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-price="2700">
+                <img src="عجله 20 ريس روكيت.jpeg" class="product-img" alt="عجلة 20 ريس روكيت">
+                <div class="product-info">
+                    <div class="product-title"> عجلة20 ريس روكيت  </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">2700 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة 20  ريس روكيت', 2700)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="100">
+                <img src="جشمة سرعات.jpeg" class="product-img" alt="جشمة سرعات خلفي">
+                <div class="product-info">
+                    <div class="product-title"> جشمة سرعات خلفي  </div>
+                    <div class="product-category">قطع غيار </div>
+                    <div class="product-price">100 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('جشمة سرعات خلفي', 100)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="200">
+                <img src="ترس سرعات.jpeg" class="product-img" alt="ترس سرعات بالكرنك">
+                <div class="product-info">
+                    <div class="product-title"> ترس وكرنك 400  </div>
+                    <div class="product-category">قطع غيار </div>
+                    <div class="product-price">200 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('ترس وكرنك 400', 200)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="60">
+                <img src="جوز كفه بلاستك ك.JPG" class="product-img" alt="جوز كفه بلاستك">
+                <div class="product-info">
+                    <div class="product-title"> جوز كفه بلاستك  </div>
+                    <div class="product-category">قطع غيار </div>
+                    <div class="product-price">60 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('جوز كفه بلاستك', 60)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="700">
+                <img src="عجله سوري .jpeg" class="product-img" alt="عجلة سوري">
+                <div class="product-info">
+                    <div class="product-title"> عجلة سوري  </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">700 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة سوري', 700)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="1000">
+                <img src="عربيه سوري.jpeg" class="product-img" alt="عربيه سوري">
+                <div class="product-info">
+                    <div class="product-title"> عربيه سوري  </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">1000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عربيه سوري', 1000)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="500">
+                <img src="عجله منجده.jpeg" class="product-img" alt="عجلة منجده">
+                <div class="product-info">
+                    <div class="product-title"> عجلةمنجده  </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">500 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة منجده', 500)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="600">
+                <img src="عجله بلاستك فيجوري.jpeg" class="product-img" alt="عجلة بلاستك فيجوري">
+                <div class="product-info">
+                    <div class="product-title"> عجلة بلاستك فيجوري  </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">600 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة بلاستك فيجوري', 600)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="600">
+                <img src="حصان 2في واحد هزاز.jpeg" class="product-img" alt="حصان 2 في واحد ">
+                <div class="product-info">
+                    <div class="product-title"> حصان 2 في واحد هزاز  </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">600 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('حصان 2 في واحد هزاز  ', 600)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="50">
+                <img src="اكسسوارات عجل.jpeg" class="product-img" alt="اكسسوارات عجل  ">
+                <div class="product-info">
+                    <div class="product-title"> اكسسوارات عجل    </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">50 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('اكسسوارات عجل  ', 50)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="2800">
+                <img src="عجله 20 سله وحماله .jpeg" class="product-img" alt="عجلة 20 volcano ">
+                <div class="product-info">
+                    <div class="product-title"> عجلة 20 volcano  </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">2800 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة 20 volcano ', 2800)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="5000">
+                <img src="عجله 26 ليكن سرعات.jpeg" class="product-img" alt="عجلة ليكن ">
+                <div class="product-info">
+                    <div class="product-title">  عجلة ليكن سرعات  </div>
+                    <div class="product-category">Road </div>
+                    <div class="product-price">5000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة ليكن سرعات  ', 5000)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="5000">
+                <img src="عجله 20 نيجر حركات.jpeg" class="product-img" alt="عجلة نيجر حركات ">
+                <div class="product-info">
+                    <div class="product-title"> عجلة نيجر حركات   </div>
+                    <div class="product-category">BMX </div>
+                    <div class="product-price">5000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة نيجر حركات ', 5000)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="500">
+                <img src="كرسي هزاز 3 مستوي.jpeg" class="product-img" alt="كرسي هزاز 3 مستوي   ">
+                <div class="product-info">
+                    <div class="product-title"> كرسي هزاز 3 مستوي     </div>
+                    <div class="product-category">اطفال </div>
+                    <div class="product-price">500 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('  كرسي هزاز 3 مستوي', 500)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="5500">
+                <img src="نيجر .jpeg" class="product-img" alt="عجلة نيجر المونيا ">
+                <div class="product-info">
+                    <div class="product-title"> عجلة 20 نيجر المونيا    </div>
+                    <div class="product-category">BMX </div>
+                    <div class="product-price">5500 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة نيجر 20 المونيا  ', 5500)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="180">
+                <img src="كرسي جيل نور خلفي.JPG" class="product-img" alt="كرسي جيل نور خلفي  ">
+                <div class="product-info">
+                    <div class="product-title"> كرسي جيل نور خلفي    </div>
+                    <div class="product-category">قطع غيار </div>
+                    <div class="product-price">180 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('كرسي جيل نور خلفي   ', 180)">أضف للسلة</button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-price="5000">
+                <img src="عجله 26 مونت فولكينو.jpeg" class="product-img" alt="عجلة 26 مونت فولكينو">
+                <div class="product-info">
+                    <div class="product-title"> عجلة 26 فولكينو  </div>
+                    <div class="product-category">عجل  </div>
+                    <div class="product-price">5000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('عجلة 26 فولكينو', 5000)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <!-- منتج بصور متعددة (سلايدر أفقية بسحب وأسهم) -->
+            <div class="product-card" data-price="40000">
+                <div class="card-slider">
+                    <button class="slider-btn prev-btn" onclick="scrollSlide(this, 1)">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="scrollSlide(this, -1)">&#10094;</button>
+                    <div class="slides-wrapper">
+                        <img src="اسكوتر هجومي 2.jpeg" alt="اسكوتر rose">
+                        <img src="اسكوتر هجومي.jpeg" alt="اسكوتر rose">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title"> اسكوتر rose  </div>
+                    <div class="product-category">اسكوتر </div>
+                    <div class="product-price">40000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('اسكوتر rose', 40000)">أضف للسلة</button>
+                </div>
+            </div>
+
+            <!-- منتج بصور متعددة (سلايدر أفقية بسحب وأسهم) -->
+            <div class="product-card" data-price="20000">
+                <div class="card-slider">
+                    <button class="slider-btn prev-btn" onclick="scrollSlide(this, 1)">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="scrollSlide(this, -1)">&#10094;</button>
+                    <div class="slides-wrapper">
+                        <img src="اسكوتر بشبكه 3.jpeg" alt="اسكوتر صغير">
+                        <img src="اسكوتر بشبكه 34.jpeg" alt="اسكوتر صغير">
+                        <img src="اسكوتر بيبي.jpeg" alt="اسكوتر صغير">
+                        <img src="اسكوتر ص بشبكه 2.jpeg" alt="اسكوتر صغير">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title"> اسكوتر صغير  </div>
+                    <div class="product-category">اسكوتر </div>
+                    <div class="product-price">20000 ج.م</div>
+                    <button class="btn-add" onclick="addToCart('اسكوتر صغير', 20000)">أضف للسلة</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Cart Modal & Overlay Elements -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-basket"></i> سلة الشراء</h3>
+            <span class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></span>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #7f8c8d; margin-top: 20px;">السلة فارغة حالياً</p>
+        </div>
+
+        <!-- نموذج إدخال بيانات الشحن للشراء داخل الموقع -->
+        <div id="checkoutForm" style="display: none; padding: 10px 0; border-top: 1px solid #eee;">
+            <h4 style="margin-bottom: 10px; font-size: 15px; color: #2c3e50;">بيانات الشحن:</h4>
+            <input type="text" id="clientName" placeholder="الاسم بالكامل" style="width:100%; padding:8px; margin-bottom:8px; border:1px solid #ccc; border-radius:4px;">
+            <input type="text" id="clientPhone" placeholder="رقم الهاتف" style="width:100%; padding:8px; margin-bottom:8px; border:1px solid #ccc; border-radius:4px;">
+            <textarea id="clientAddress" placeholder="العنوان بالتفصيل (المحافظة، المنطقة، الشارع)" style="width:100%; padding:8px; margin-bottom:8px; border:1px solid #ccc; border-radius:4px; height:60px;"></textarea>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span id="cartTotalSum">0 ج.م</span>
+            </div>
+            <button class="btn-checkout" id="checkoutBtn" onclick="proceedToCheckout()">إتمام الطلب</button>
+        </div>
+    </div>
+
+    <!-- Script file link -->
+    <script src="script.js"></script>
+
+    <!-- زر شات بوت الدائري العائم -->
+    <div id="chatbot-toggle-btn" onclick="toggleChatbot()" title="تحدث مع مساعد آدم">
+        💬
+    </div>
+
+    <!-- نافذة الشات بوت -->
+    <div id="chatbot-container" class="chatbot-closed">
+        <div class="chatbot-header">
+            <span>مساعد إكسسوار آدم الآلي 🤖</span>
+            <span onclick="toggleChatbot()" style="cursor: pointer; font-size: 18px;">&times;</span>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <div class="bot-msg">أهلاً بيك في <b>إكسسوار آدم</b>! 🚲 أنا مساعدك الآلي، اسألني عن أسعار العجل، الإسكوترات، قطع الغيار، أو مكان المحل وهيتم الرد عليك فوراً!</div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="اكتب سؤالك هنا..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendUserMessage()">إرسال</button>
+        </div>
+    </div>
+
+</body>
+</html>
