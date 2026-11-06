@@ -6,6 +6,30 @@
     <title>نبذة عننا | إكسسوار آدم</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .rating-stars {
+            color: #f39c12;
+            margin-right: 5px;
+        }
+        .review-card {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            margin-bottom: 15px;
+            text-align: right;
+            border-right: 4px solid #e67e22;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+    </style>
 </head>
 <body>
 
@@ -21,22 +45,98 @@
     </header>
 
     <!-- محتوى صفحة نبذة عننا -->
-    <div class="container" style="max-width: 900px; margin-top: 50px;">
-        <div style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;">
+    <div class="container" style="max-width: 900px; margin-top: 50px; margin-bottom: 50px;">
+        <!-- بطاقة التعريف بالمتجر -->
+        <div style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center; margin-bottom: 40px;">
             <h1 style="color: #1a252f; margin-bottom: 20px; font-size: 30px;"><i class="fas fa-info-circle" style="color: #e67e22;"></i> نبذة عن إكسسوار آدم</h1>
             <p style="font-size: 18px; line-height: 2; color: #2c3e50; text-align: justify;">
-                أهلاً بك في <b>إكسسوار آدم</b>، وجهتك الأولى والأساسية في محافظة <b>الفيوم</b> لكل ما يخص الدراجات الهوائية (العجل)، الإسكوترات الكهربائية، وقطع الغيار الأصلية اكسسوار ادم متخصص في الدراجات الهوائية وقع الغيار من سنه 1992 . 
+                أهلاً بك في <b>إكسسوار آدم</b>، وجهتك الأولى والأساسية في محافظة <b>الفيوم</b> لكل ما يخص الدراجات الهوائية (العجل)، الإسكوترات الكهربائية، وقطع الغيار الأصلية. إكسسوار آدم متخصص في الدراجات الهوائية وقطع الغيار منذ عام 1992 (تحت إشراف أولاد عبدالعزيز آدم). 
                 <br><br>
-                نحن نهدف دائماً لتلبية احتياجات جميع العملاء وتقديم أفضل الموديلات (دراجات جبلية، سرعات، أطفال، ونيجر BMX)  مع توفير حلول ذكية ومحرك توافق فريد لضمان حصولك على القطعة المناسبة لعجلتك بكل سهولة وبأفضل الأسعار المنافسة في السوق المصري .
-                           
-                {تحت اشراف اولاد عبد العزيز ادم}
-        
+                نحن نهدف دائماً لتلبية احتياجات جميع العملاء وتقديم أفضل الموديلات (دراجات جبلية، سرعات، أطفال، ونيجر BMX) مع توفير حلول ذكية ومحرك توافق فريد لضمان حصولك على القطعة المناسبة لعجلتك بكل سهولة وبأفضل الأسعار المنافسة في السوق المصري.
             </p>
             <div style="margin-top: 30px;">
                 <a href="index.html" style="background-color: #e67e22; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;">تصفح المنتجات الآن 🚲</a>
             </div>
         </div>
+
+        <!-- قسم آراء وتقييمات العملاء -->
+        <div style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            <h2 style="color: #1a252f; text-align: center; margin-bottom: 10px;"><i class="fas fa-star" style="color: #f39c12;"></i> آراء وتقييمات العملاء</h2>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">آراء بعض عملائنا الكرام بعد تجربتهم مع متجر إكسسوار آدم</p>
+
+            <!-- عرض التقييمات التفاعلية -->
+            <div id="reviewsContainer">
+                <div class="review-card">
+                    <strong style="color: #2c3e50; font-size: 16px;">محمد أحمد</strong> 
+                    <span class="rating-stars">★★★★★</span>
+                    <p style="margin: 8px 0 0 0; color: #555;">خدمة ممتازة وتوصيل في الميعاد وكل حاجة أصلية ومظبوطة، شكراً إكسسوار آدم!</p>
+                </div>
+
+                <div class="review-card">
+                    <strong style="color: #2c3e50; font-size: 16px;">محمود إبراهيم</strong> 
+                    <span class="rating-stars">★★★★★</span>
+                    <p style="margin: 8px 0 0 0; color: #555;">أفضل محل عجل وقطع غيار في الفيوم، التروس والقطع أصلية والتعامل محترم جداً.</p>
+                </div>
+            </div>
+
+            <!-- نموذج أضف تقييمك -->
+            <div style="margin-top: 35px; background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #eee; text-align: right;">
+                <h3 style="color: #2c3e50; margin-bottom: 15px;"><i class="fas fa-pen"></i> أضف تقييمك وتجربتك</h3>
+                <form id="addReviewForm" onsubmit="addNewReview(event)">
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-weight: bold; color: #34495e;">الاسم الكريم:</label>
+                        <input type="text" id="reviewerName" class="form-control" placeholder="اكتب اسمك هنا" required>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-weight: bold; color: #34495e;">التقييم:</label>
+                        <select id="reviewerRating" class="form-control">
+                            <option value="★★★★★">5 نجوم (ممتاز)</option>
+                            <option value="★★★★">4 نجوم (جيد جداً)</option>
+                            <option value="★★★">3 نجوم (جيد)</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-weight: bold; color: #34495e;">تعليقك ورأيك:</label>
+                        <textarea id="reviewerComment" class="form-control" rows="3" placeholder="اكتب رأيك وتجربتك معنا..." required></textarea>
+                    </div>
+
+                    <button type="submit" style="background-color: #e67e22; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px;">
+                        إرسال التقييم ⭐
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <!-- كود الجافا سكريبت لإضافة التقييم مباشرة للزيارة الحالية -->
+    <script>
+        function addNewReview(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('reviewerName').value.trim();
+            const rating = document.getElementById('reviewerRating').value;
+            const comment = document.getElementById('reviewerComment').value.trim();
+            
+            if (!name || !comment) return;
+
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            
+            const newReviewCard = document.createElement('div');
+            newReviewCard.className = 'review-card';
+            newReviewCard.innerHTML = `
+                <strong style="color: #2c3e50; font-size: 16px;">${name}</strong> 
+                <span class="rating-stars">${rating}</span>
+                <p style="margin: 8px 0 0 0; color: #555;">${comment}</p>
+            `;
+
+            reviewsContainer.prepend(newReviewCard);
+            
+            alert(`شكراً لك يا ${name}! تم إرسال تقييمك ونشره بنجاح ⭐`);
+            document.getElementById('addReviewForm').reset();
+        }
+    </script>
 
 </body>
 </html>

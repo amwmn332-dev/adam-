@@ -155,7 +155,7 @@ function updateCartUI() {
     if (cartTotalSum) cartTotalSum.innerText = `${total} ج.م`;
 }
 
-// Internal Checkout System
+// Internal Checkout System (محدث لإرسال تفاصيل الطلب عبر الواتساب مباشرة للبائع)
 function proceedToCheckout() {
     if (cart.length === 0) {
         alert('سلتك فارغة!');
@@ -167,7 +167,7 @@ function proceedToCheckout() {
 
     if (!isCheckoutStep) {
         form.style.display = 'block';
-        checkoutBtn.innerText = 'تأكيد ودفع الطلب';
+        checkoutBtn.innerText = 'تأكيد وإرسال الطلب عبر الواتساب';
         isCheckoutStep = true;
     } else {
         const name = document.getElementById('clientName').value.trim();
@@ -179,7 +179,29 @@ function proceedToCheckout() {
             return;
         }
 
-        alert(`تم تسجيل طلبك بنجاح يا ${name}! 🚀\nسيتم التواصل معك قريباً على رقم ${phone} لتأكيد الشحن.`);
+        // تجميع تفاصيل المنتجات في رسالة واتساب منسقة
+        let orderDetails = "🛍️ *طلب جديد من متجر إكسسوار آدم*\n\n";
+        orderDetails += `👤 *الاسم:* ${name}\n`;
+        orderDetails += `📞 *الهاتف:* ${phone}\n`;
+        orderDetails += `📍 *العنوان:* ${address}\n\n`;
+        orderDetails += `🛒 *المنتجات المطلوبة:*\n`;
+
+        let total = 0;
+        cart.forEach((item, index) => {
+            total += item.price;
+            orderDetails += `${index + 1}. ${item.title} - ${item.price} ج.م\n`;
+        });
+
+        orderDetails += `\n💰 *الإجمالي الكلي:* ${total} ج.م`;
+
+        // رقم الواتساب الخاص بك
+        const vendorWhatsApp = "201029290236"; 
+
+        const encodedMessage = encodeURIComponent(orderDetails);
+        const whatsappURL = `https://wa.me/${vendorWhatsApp}?text=${encodedMessage}`;
+
+        // فتح واتساب مباشرة برسالة الطلب الجاهزة
+        window.open(whatsappURL, '_blank');
         
         cart = [];
         updateCartUI();
@@ -230,11 +252,11 @@ function appendMessage(text, className) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-// محرك الشات بوت الذكي المعزز بجميع المنتجات والأسئلة الشائعة وخدمة ما بعد البيع
+// محرك الشات بوت الذكي المعزز بجميع المنتجات والأسئلة الشائعة وخدمة ما بعد البيع ومصاريف الشحن
 function generateSmartReply(userQuery) {
     const q = userQuery.toLowerCase();
 
-    // 1. خدمة ما بعد البيع والأسئلة الشائعة
+    // 1. خدمة ما بعد البيع والأسئلة الشائعة والشحن
     if (q.includes('ضمان') || q.includes('في ضمان')) {
         return 'نعم، متوفر ضمان على جميع الدراجات وقطع الغيار ضد عيوب الصناعة في متجر إكسسوار آدم 🛡️.';
     }
@@ -249,6 +271,15 @@ function generateSmartReply(userQuery) {
     }
     else if (q.includes('مواعيد') || q.includes('وقت') || q.includes('شغالين') || q.includes('تفتحوا') || q.includes('تقفلوا') || q.includes('الساعة')) {
         return 'مواعيد العمل في المتجر: كل يوم من <b>١٠ صباحاً حتى ١٠ مساءً</b>، ما عدا يوم الجمعة من <b>٤ عصراً حتى ١٠ مساءً</b> ⏰.';
+    }
+    else if (q.includes('تكلفة الشحن') || q.includes('مصاريف الشحن') || q.includes('شحن كام') || q.includes('كام الشحن')) {
+        return 'تكلفة الشحن ثابتة وبتكون <b>١٥٠ ج.م</b> لكل الطلبات 📦.';
+    }
+    else if (q.includes('محافظات') || q.includes('بنوصل فين') || q.includes('المحافظات المتاحة') || q.includes('نوصل فين')) {
+        return 'نحن نوفر خدمة الشحن والتوصيل إلى <b>جميع المحافظات</b> داخل مصر 🇪🇬.';
+    }
+    else if (q.includes('مدة التوصيل') || q.includes('يوصل في قد ايه') || q.includes('كام يوم') || q.includes('وقت الشحن')) {
+        return 'مدة التوصيل تستغرق من <b>٥ أيام إلى ١٠ أيام</b> عمل ليصلك الطلب حتى باب البيت 🚚.';
     }
 
     // 2. استفسارات سريعة ومخصصة لقطع الغيار (تروس، سوست، كراسي)
@@ -396,12 +427,12 @@ function generateSmartReply(userQuery) {
         return 'تقدر تتواصل معانا مباشرة عبر الواتساب على رقمنا: <b>+201029290236</b> وهنرد عليك في أقرب وقت! 📱';
     }
     else if (q.includes('شحن') || q.includes('توصيل') || q.includes('ديليفري')) {
-        return 'ايوه متاح طلبات الشحن والتوصيل، وتقدر تتم طلبك من خلال سلة المشتريات وإدخال بياناتك (الاسم، الهاتف، العنوان) لتأكيد الشحن 🚀.';
+        return 'متاح الشحن والتوصيل لجميع المحافظات بتكلفة <b>١٥٠ ج.م</b> ومدة توصيل من <b>٥ إلى ١٠ أيام</b> 🚀.';
     }
     else if (q.includes('السلام') || q.includes('ازيك') || q.includes('مرحبا') || q.includes('اهلاً') || q.includes('أهلاً')) {
-        return 'وعليكم السلام ورحمة الله وبركاته، أهلاً بك في متجر إكسسوار آدم! اسألني عن أي منتج، مواعيد العمل، أو خدمات الضمان والصيانة وستجد إجابة فورية 😊.';
+        return 'وعليكم السلام ورحمة الله وبركاته، أهلاً بك في متجر إكسسوار آدم! اسألني عن أي منتج، مواعيد العمل، الشحن، أو خدمات الضمان والصيانة وستجد إجابة فورية 😊.';
     }
     else {
-        return 'عذراً، مش متأكد من فهم سؤالك بدقة 😅. تقدر تسألني عن الأسعار، الضمان، الاستبدال خلال ٢٤ ساعة، مواعيد العمل، أو تتواصل معانا على الواتساب <b>+201029290236</b>!';
+        return 'عذراً، مش متأكد من فهم سؤالك بدقة 😅. تقدر تسألني عن الأسعار، الشحن (المحافظات وتكلفته ومدة التوصيل)، الضمان، الاستبدال خلال ٢٤ ساعة، أو تتواصل معانا على الواتساب <b>+201029290236</b>!';
     }
 }
