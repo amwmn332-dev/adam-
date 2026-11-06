@@ -155,7 +155,7 @@ function updateCartUI() {
     if (cartTotalSum) cartTotalSum.innerText = `${total} ج.م`;
 }
 
-// Internal Checkout System (محدث لإرسال تفاصيل الطلب عبر الواتساب مباشرة للبائع)
+// Internal Checkout System (إرسال تفاصيل الطلب عبر الواتساب مباشرة للبائع)
 function proceedToCheckout() {
     if (cart.length === 0) {
         alert('سلتك فارغة!');
